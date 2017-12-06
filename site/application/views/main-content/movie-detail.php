@@ -1,3 +1,7 @@
+<script>
+    var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>';
+    var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+</script>
 <nav class="row">
     <div class="col-xs-12">
         <ul class="nav nav-pills">
@@ -23,7 +27,7 @@
                     <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
                 </a>
             <?php } ?>
-            (<?php echo $num_votes; ?> votes)
+            (<span id="votes_count"><?php echo $num_votes; ?></span> votes)
         </div>
         <ul>
             <li><b>Type: </b><?php echo $objMovie->getDisplayValue('format'); ?></li>

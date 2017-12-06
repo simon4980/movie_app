@@ -24,14 +24,24 @@ class VoteApi extends CI_Controller {
         $this->load->model('vote_model');
 
 
-//        if (count($_POST) && array_key_exists('movie_id', $_POST) && array_key_exists('rate', $_POST)) {
-            $this->vote_model->setMovieId(1);
-//            $this->vote_model->setSessionId($strCookieValue);
-            $this->vote_model->setRate(1);
+        if (count($_POST) && array_key_exists('movie_id', $_POST) && array_key_exists('rate', $_POST)) {
+            $this->vote_model->setMovieId($_POST['movie_id']);
+            $this->vote_model->setRate($_POST['rate']);
             $this->vote_model->save();
 
+            $this->load->model('vote_collection_model');
+            $this->vote_collection_model->loadVotes($_POST['movie_id']);
+            header('Content-Type: application/json');
+            echo json_encode(
+                array(
+                    'success' => TRUE,
+                    'vote_count' => $this->vote_collection_model->getNumVotes(),
+                    'vote_avg' => $this->vote_collection_model->getRating(),
+                )
+            );
             exit;
-//        }
+        }
+        redirect('/');
         exit;
     }
 }
