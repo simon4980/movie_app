@@ -42,7 +42,9 @@
                     <td><a href="/movie/<?php echo $objMovie->getUrl(); ?>"><?php echo $objMovie->getDisplayValue('title'); ?></a></td>
                     <td><?php echo $objMovie->getDisplayValue('format'); ?></td>
                     <td>
+                        <?php if ($objMovie->getLength() >= 60) { ?>
                         <?php echo date('g', mktime(0,$objMovie->getDisplayValue('length'))); ?> hour(s)
+                        <?php } ?>
                         <?php echo date('i ', mktime(0,$objMovie->getDisplayValue('length')));?> minute(s)
                     </td>
                     <td><?php echo $objMovie->getDisplayValue('releaseyear'); ?></td>

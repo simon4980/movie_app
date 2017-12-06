@@ -87,7 +87,7 @@ if (validation_errors()) {
                 ?>
             </label>
         </div>
-        <div class="col-xs-12 text-center">
+        <div class="col-xs-12 text-center btn-container">
             <button type="submit" class="btn btn-primary">Save</button>
             <a href="/movie/<?php echo $objMovie->getUrl(); ?>" class="btn btn-default">Cancel</a>
         </div>
