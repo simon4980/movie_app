@@ -31,17 +31,21 @@ voteApi.prototype.submit = function() {
                 'rate': this.vote_value
             },
             success:function(data) {
-                $('#votes_count').html(data.vote_count);
+                if (data.success) {
+                    $('#votes_count').html(data.vote_count);
 
-                for(var loop = 0; loop < 5; loop++) {
-                    if (loop < data.vote_avg) {
-                        $_this.vote_links.eq(loop).find('span').addClass('glyphicon-star').removeClass('glyphicon-star-empty');
-                    } else {
-                        $_this.vote_links.eq(loop).find('span').addClass('glyphicon-star-empty').removeClass('glyphicon-star');
+                    for (var loop = 0; loop < 5; loop++) {
+                        if (loop < data.vote_avg) {
+                            $_this.vote_links.eq(loop).find('span').addClass('glyphicon-star').removeClass('glyphicon-star-empty');
+                        } else {
+                            $_this.vote_links.eq(loop).find('span').addClass('glyphicon-star-empty').removeClass('glyphicon-star');
+                        }
+
+                        $_this.vote_links.eq(loop).addClass('disabled');
+
                     }
-
-                    $_this.vote_links.eq(loop).addClass('disabled');
-
+                } else {
+                    alert('Error: please refresh and try again.');
                 }
 
             }
