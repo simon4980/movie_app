@@ -1,15 +1,8 @@
 <?php
-require APPPATH.'/libraries/Domain_Object.inc';
+require_once APPPATH.'/libraries/Domain_Object.inc';
 
 class Movie_model extends Domain_Object
 {
-
-//    protected $title;
-//    protected $format;
-//    protected $length;
-//    protected $release_year;
-//    protected $url;
-
     protected $arrTableValues = array(
         'title' => NULL,
         'format' => NULL,

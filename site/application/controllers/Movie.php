@@ -22,8 +22,16 @@ class Movie extends CI_Controller {
 	{
         $this->_loadMovieByKey($strMovieKey);
         $data['objMovie'] = $this->movie_model;
+        $this->load->model('vote_collection_model');
+        $this->load->model('vote_model');
+        $this->vote_model->setMovieId($this->movie_model->getId());
 
+        $this->vote_collection_model->loadVotes($this->movie_model->getId());
+        $data['num_votes'] = $this->vote_collection_model->getNumVotes();
+        $data['rating'] = $this->vote_collection_model->getRating();
+        $data['had_voted'] = $this->vote_model->hasVoted();
         $data['main_content'] = $this->load->view('main-content/movie-detail', $data, TRUE);
+
         $this->load->view('structure', $data);
 	}
 

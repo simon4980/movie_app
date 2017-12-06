@@ -12,6 +12,19 @@
         <h1>
             <?php echo $objMovie->getDisplayValue('title'); ?>
         </h1>
+        <div id="rating">
+            <?php for ($x = 0; $x < $rating; $x++) {  ?>
+                <a type="button" data-movie_id="<?php echo $objMovie->getId(); ?>" class="<?php echo (($had_voted) ? 'disabled':''); ?>">
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                </a>
+            <?php } ?>
+            <?php for ($x = 0; $x <  5 - $rating; $x++) {  ?>
+                <a type="button" data-movie_id="<?php echo $objMovie->getId(); ?>" class="<?php echo (($had_voted) ? 'disabled':''); ?>">
+                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                </a>
+            <?php } ?>
+            (<?php echo $num_votes; ?> votes)
+        </div>
         <ul>
             <li><b>Type: </b><?php echo $objMovie->getDisplayValue('format'); ?></li>
             <li><b>Length: </b><?php echo date('g', mktime(0,$objMovie->getDisplayValue('length'))); ?> hour(s)

@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="row">
             <div class="cols-xs-12 col-sm-6">
                 <h5>Simon's Movie Emporium</h5>
-                <p>SANS Movie App Project.  Created by Simon.</p>
+                <p>SANS Movie App Project.<br />Created by Simon.</p>
             </div>
             <div class="col-xs-12 col-sm-6">
                 <ul>
