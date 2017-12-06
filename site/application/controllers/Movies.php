@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Movies extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,9 +20,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-
-
-	    $data['main_content'] = '<img src="https://media.cntraveler.com/photos/56212a48799ed1fe16a2f6e7/master/pass/blockbuster-video-cr-alamy.jpg" class="img-responsive" />';
-		$this->load->view('structure', $data);
-	}
+	    print('Movies List');
+        $data['main_content'] = 'Foobar';
+        $this->load->view('structure', $data);	}
 }

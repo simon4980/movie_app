@@ -52,3 +52,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['movie/addmovie'] = 'movie/addmovie';
+$route['movie/([a-zA-Z0-9\-]+)'] = 'movie/index/$1';
+$route['movie/addmoive'] = 'movie/addmovie';
+$route['movie/([a-zA-Z0-9\-]+)/edit'] = 'movie/edit/$1';
+$route['movie/([a-zA-Z0-9\-]+)/delete'] = 'movie/delete/$1';
+
