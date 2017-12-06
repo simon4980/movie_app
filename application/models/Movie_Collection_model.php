@@ -2,10 +2,10 @@
 class Movie_Collection_model extends CI_Model
 {
     protected $arrSortValues = array(
-        'title',
-        'format',
-        'release_year',
-        'length',
+        'title' => 'var',
+        'format' => 'var',
+        'release_year' => 'int',
+        'length' => 'int',
     );
 
     protected $arrColValues = array(
@@ -53,8 +53,12 @@ class Movie_Collection_model extends CI_Model
             throw new Exception('Sorting direction must be either ASC or DESC');
         }
 
-        if (!in_array($strSortBy, $this->arrSortValues)) {
+        if (!array_key_exists($strSortBy, $this->arrSortValues)) {
             throw new Exception(('Sort by key provided not in the approved list'));
+        }
+
+        if ($this->arrSortValues[$strSortBy] == 'var') {
+            $strSortBy = 'LOWER('.$strSortBy.')';
         }
 
         $this->db->order_by($strSortBy, $strDirection);
