@@ -12,5 +12,13 @@
         <h1>
             <?php echo $objMovie->getDisplayValue('title'); ?>
         </h1>
+        <ul>
+            <li><b>Type: </b><?php echo $objMovie->getDisplayValue('format'); ?></li>
+            <li><b>Length: </b><?php echo date('g', mktime(0,$objMovie->getDisplayValue('length'))); ?> hour(s)
+                <?php echo date('i ', mktime(0,$objMovie->getDisplayValue('length')));?> minute(s)
+                (<?php echo $objMovie->getDisplayValue('length'); ?> minutes)</li>
+            <li><b>Release Year: </b><?php echo $objMovie->getDisplayValue('releaseyear'); ?></li>
+
+        </ul>
     </div>
 </div>

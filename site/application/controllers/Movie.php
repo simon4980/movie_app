@@ -27,6 +27,9 @@ class Movie extends CI_Controller {
         $this->load->view('structure', $data);
 	}
 
+    /**
+     * Add Movie
+     */
 	public function addmovie() {
         $this->load->helper('form');
         $this->load->model('movie_model');
@@ -40,6 +43,10 @@ class Movie extends CI_Controller {
         $this->load->view('structure', $data);
     }
 
+    /**
+     * Deleting a movie
+     * @param null $strMovieKey
+     */
     public function delete($strMovieKey = NULL)
     {
         $this->load->model('movie_model');
@@ -47,8 +54,12 @@ class Movie extends CI_Controller {
         $this->movie_model->delete();
         redirect('/movies');
         exit;
-}
+    }
 
+    /**
+     * Edit movie data
+     * @param null $strMovieKey
+     */
 	public function edit($strMovieKey = NULL)
     {
         $this->load->helper('form');
@@ -64,6 +75,10 @@ class Movie extends CI_Controller {
         $this->load->view('structure', $data);
     }
 
+    /**
+     * Load movie data by url key
+     * @param null $strMovieKey
+     */
     private function _loadMovieByKey($strMovieKey = NULL)
     {
         // No key redirect to homepage
@@ -82,6 +97,9 @@ class Movie extends CI_Controller {
         $data['objMovie'] = $this->movie_model;
     }
 
+    /**
+     * Save movie data
+     */
     private function _save() {
 	    $this->movie_model->setTitle($_POST['title']);
 	    $this->movie_model->setFormat($_POST['format']);
@@ -95,12 +113,15 @@ class Movie extends CI_Controller {
         }
     }
 
+    /**
+     * Validate movie data
+     * @return bool
+     */
     private function _validateForm()
     {
         if (!count($_POST)) {
             return FALSE;
         }
-
         $this->load->library('form_validation');
         $this->form_validation->set_rules('title', 'Movie Title', 'required|max_length[50]');
         $this->form_validation->set_rules('format', 'Movie Format', 'required|in_list[DVD,VHS,Streaming]');

@@ -28,6 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">Home</a></li>
                 <li><a href="/movies">Movies</a></li>
+                <li><a href="/movie/addmovie">Add Movie</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -36,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <section class="main-section container">
     <?php echo $main_content; ?>
 </section>
-<footer>
+<footer class="bg-info">
     <div class="container">
         <div class="row">
             <div class="cols-xs-12 col-sm-6">
@@ -47,6 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/movies">Movies</a></li>
+                    <li><a href="/movie/addmovie">Add Movie</a></li>
                 </ul>
             </div>
         </div>

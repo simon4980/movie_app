@@ -20,7 +20,18 @@ class Movies extends CI_Controller {
 	 */
 	public function index()
 	{
-	    print('Movies List');
-        $data['main_content'] = 'Foobar';
+        $this->load->model('movie_collection_model');
+
+        $data['sortby'] = '';
+        $data['sortdir'] = '';
+        if (array_key_exists('sortby', $_GET) && array_key_exists('sortdir', $_GET)) {
+            $this->movie_collection_model->buildSort($_GET['sortby'], $_GET['sortdir']);
+            $data['sortby'] = $_GET['sortby'];
+            $data['sortdir'] = $_GET['sortdir'];
+        }
+
+        $this->movie_collection_model->loadMovies();
+        $data['movie_collection'] = $this->movie_collection_model;
+        $data['main_content'] = $this->load->view('main-content/movie-list', $data, TRUE);
         $this->load->view('structure', $data);	}
 }

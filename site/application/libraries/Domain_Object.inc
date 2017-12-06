@@ -58,6 +58,25 @@ class Domain_Object extends CI_Model
         }
     }
 
+    /**
+     * Map data to the table value and orginal value arrays.
+     * @param $objMovieData
+     */
+    public function mapData($objMovieData)
+    {
+        # Set the id first
+        $this->id = $objMovieData->id;
+        unset($objMovieData->id);
+
+        foreach ($objMovieData as $strDbKey => $mixDbValue) {
+            $this->arrTableValues[$strDbKey] = $mixDbValue;
+            $this->arrOrginalValues[$strDbKey] = $mixDbValue;
+        }
+    }
+
+    /**
+     * Delete data from database
+     */
     public function delete()
     {
         $this->db->where('id', $this->getId());
