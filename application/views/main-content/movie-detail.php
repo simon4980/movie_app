@@ -5,7 +5,6 @@
 <nav class="row">
     <div class="col-xs-12">
         <ul class="nav nav-pills pull-right">
-            <li><a href="/movie/addmovie">Add</a></li>
             <li><a href="/movie/<?php echo $objMovie->getUrl(); ?>/edit">Edit</a></li>
             <li><a href="#" data-toggle="modal" data-target="#modal-delete">Delete</a></li>
         </ul>

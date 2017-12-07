@@ -21,8 +21,8 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 
-
-	    $data['main_content'] = '<img src="https://media.cntraveler.com/photos/56212a48799ed1fe16a2f6e7/master/pass/blockbuster-video-cr-alamy.jpg" class="img-responsive" />';
-		$this->load->view('structure', $data);
+	    $data = array();
+        $data['main_content'] = $this->load->view('main-content/home', $data, TRUE);
+        $this->load->view('structure', $data);
 	}
 }
