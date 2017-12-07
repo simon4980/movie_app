@@ -7,7 +7,7 @@
         <ul class="nav nav-pills pull-right">
             <li><a href="/movie/addmovie">Add</a></li>
             <li><a href="/movie/<?php echo $objMovie->getUrl(); ?>/edit">Edit</a></li>
-            <li><a href="/movie/<?php echo $objMovie->getUrl(); ?>/delete">Delete</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#modal-delete">Delete</a></li>
         </ul>
     </div>
 </nav>
@@ -42,3 +42,24 @@
         </ul>
     </div>
 </div>
+
+<!-- Modal -->
+<div id="modal-delete" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you wish to delete <?php echo $objMovie->getDisplayValue('title'); ?>.
+                    It will be gone forever. Bye bye movie.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a href="/movie/<?php echo $objMovie->getUrl();?>/delete" type="button" class="btn btn-primary">Confirm Delete</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
